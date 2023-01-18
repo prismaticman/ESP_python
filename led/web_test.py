@@ -1,6 +1,10 @@
+################################################################################
+## author:xiao
+## date:2023/1/18
+################################################################################
+
 import network
 from socket import *
-
 
 wlan = network.WLAN(network.STA_IF)#创建工作站界面 STA传输模式
 wlan.active(True)                  #激活界面
@@ -9,7 +13,6 @@ wlan.isconnected()                 #检查工作站是否已连接到 AP
 wlan.connect('HUAWEI-004OB1','1q2w3e4r5t6y7u8i9o0p')#连接到接入点
 wlan.config('mac')                 #获取接口的 MAC 地址
 wlan.ifconfig()                    #获取接口的 IP/网络掩码/GW/DNS 地址
-
 
 # 网络连接函数
 # def do_connect():
@@ -44,7 +47,4 @@ wlan.ifconfig()                    #获取接口的 IP/网络掩码/GW/DNS 地�
 
 # # 7. 关闭套接字
 # udp_socket.close()
-
-
-
 
