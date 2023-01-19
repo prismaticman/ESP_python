@@ -2,6 +2,8 @@
 ## author :xiao
 ## date   :2023/1/18
 ## version:1.0
+## STA传输模式收发一次网络数据
+## 网络调试助手端口设置为8000
 ################################################################################
 
 import network
@@ -28,24 +30,24 @@ wlan.ifconfig()                    #获取接口的 IP/网络掩码/GW/DNS 地�
 #     print('network config:', wlan.ifconfig())
 
 
-# # 1. 创建udp套接字
-# udp_socket = socket(AF_INET, SOCK_DGRAM)
+# 1. 创建udp套接字
+udp_socket = socket(AF_INET, SOCK_DGRAM)
 
-# # 2. 准备接收方的地址
-# dest_addr = ('192.168.3.56', 8000)
+# 2. 准备接收方的地址
+dest_addr = ('192.168.3.56', 8000)
 
-# # 3. 从键盘获取数据
-# send_data = "hello world to pc"
+# 3. 从键盘获取数据
+send_data = "hello world to pc"
 
-# # 4. 发送数据到指定的电脑上
-# udp_socket.sendto(send_data.encode('utf-8'), dest_addr)
+# 4. 发送数据到指定的电脑上
+udp_socket.sendto(send_data.encode('utf-8'), dest_addr)
 
-# # 5. 从指定的电脑上接收数据
-# recv_data = udp_socket.recvfrom(1024)
+# 5. 从指定的电脑上接收数据
+recv_data = udp_socket.recvfrom(1024)
 
-# # 6. 打印数据
-# print(recv_data)
+# 6. 打印数据
+print(recv_data)
 
-# # 7. 关闭套接字
-# udp_socket.close()
+# 7. 关闭套接字
+udp_socket.close()
 
