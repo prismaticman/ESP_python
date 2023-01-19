@@ -20,4 +20,3 @@ while True:
     for i in range(1023, -1, -1):
         led2.duty(i)
         time.sleep_ms(1)
-
