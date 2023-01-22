@@ -1,21 +1,19 @@
-from machine import Pin, SoftI2C
-from time import sleep
+################################################################################
+## author :xiao
+## date   :2023/1/22
+## version:1.0
+################################################################################
+
+from machine import Pin, I2C
 import ssd1306
+import framebuf
 
+i2c = I2C(scl=Pin(5), sda=Pin(4), freq=100000)
+display = ssd1306.SSD1306_I2C(128, 64, i2c)
 
-# 创建i2c对象
-i2c = SoftI2C(scl=Pin(22), sda=Pin(21))
-
-# 宽度高度
-oled_width = 128
-oled_height = 64
-
-# 创建oled屏幕对象
-oled = ssd1306.SSD1306_I2C(oled_width, oled_height, i2c)
-
-# 在指定位置处显示文字
-oled.text('Hello!', 0, 0)
-oled.text('Hello, World 2!', 0, 10)
-oled.text('Hello, World 3!', 0, 20)
-
-oled.show()
+display.fill(0)
+display.text('MicroPython', 40, 0, 1)
+display.text('SSD1306', 40, 12, 1)
+display.text('OLED 128x64', 40, 24, 1)
+display.show()
+display.show()
