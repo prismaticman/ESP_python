@@ -41,30 +41,70 @@ fonts= {
 }
 
 #函数部分
+    
+
 def chinese(ch_str, x_axis, y_axis): 
-   offset_ = 0 
-   for k in ch_str: 
-       code = 0x00  # 将中文转成16进制编码 
-       data_code = k.encode("utf-8")
-       code |= data_code[0] << 16
-       code |= data_code[1] << 8
-       code |= data_code[2]
-       byte_data = fonts[code]
-       for y in range(0, 16):
-           a_ = bin(byte_data[y]).replace('0b', '')
-           while len(a_) < 8:
-               a_ = '0'+ a_
-           b_ = bin(byte_data[y+16]).replace('0b', '')
-           while len(b_) < 8:
-               b_ = '0'+ b_
-           for x in range(0, 8):
-               OLED.pixel(x_axis + offset_ + x,    y+y_axis, int(a_[x]))   
-               OLED.pixel(x_axis + offset_ + x +8, y+y_axis, int(b_[x]))   
-       offset_ += 16
-#显示汉字
-chinese('你好啊我的朋友',8,16) 
-OLED.show()
-#显示英文字符串
-OLED.text('hello my friend!',4,48)
-OLED.show()
+    offset_ = 0 
+    for k in ch_str: 
+        code = 0x00  # 将中文转成16进制编码 
+        data_code = k.encode("utf-8")
+        code |= data_code[0] << 16
+        code |= data_code[1] << 8
+        code |= data_code[2]
+        byte_data = fonts[code]
+        for y in range(0, 16):
+            a_ = bin(byte_data[y]).replace('0b', '')
+            while len(a_) < 8:
+                a_ = '0'+ a_
+            b_ = bin(byte_data[y+16]).replace('0b', '')
+            while len(b_) < 8:
+                b_ = '0'+ b_
+            for x in range(0, 8):
+                OLED.pixel(x_axis + offset_ + x,    y+y_axis, int(a_[x]))   
+                OLED.pixel(x_axis + offset_ + x +8, y+y_axis, int(b_[x]))   
+        offset_ += 16
+       
+while True:
+    delay=0.02
+    
+    OLED.fill(0)
+    OLED.show()
+    time.sleep(1)
+    #显示汉字
+    chinese('你好啊我的朋友',8,16) 
+    OLED.show()
+    time.sleep(1)
+      #滚动    
+    OLED.scroll(1,0)
+    time.sleep(delay)
+    OLED.show()
+    OLED.scroll(1,0)
+    time.sleep(delay)
+    OLED.show()
+    OLED.scroll(1,0)
+    time.sleep(delay)
+    OLED.show()
+    OLED.scroll(1,0)
+    time.sleep(delay)
+    OLED.show()
+    OLED.scroll(1,0)
+    time.sleep(delay)
+    OLED.show()
+    OLED.scroll(1,0)
+    time.sleep(delay)
+    OLED.show()
+    OLED.scroll(1,0)
+    time.sleep(delay)
+    OLED.show()
+    OLED.scroll(1,0)
+    time.sleep(delay)
+    OLED.show()
+    #显示英文字符串
+    OLED.text('hello my friend!',4,48)
+    OLED.show()
+    time.sleep(1)
+
+    OLED.fill(1)
+    OLED.show()
+    time.sleep(1)
 
