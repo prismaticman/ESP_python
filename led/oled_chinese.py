@@ -9,6 +9,9 @@ from ssd1306 import SSD1306_I2C
 OLED= SSD1306_I2C(128, 64, i2c)
 
 #fonts=....
+# 确定程序中要显示哪些中文，例如项目的项
+# 找到对应的编码值，此时是项UTF-80xe79bae
+# 通过特殊软件，制作要显示的样子项
 fonts= {
     0xe9a1b9:
     [0x00,0x01,0x00,0x00,0x3D,0x09,0x09,0x09,0x3D,0x01,0x00,0x00,0x01,0x03,0x00,0x00,
@@ -45,8 +48,9 @@ def chinese(ch_str, x_axis, y_axis):
                OLED.pixel(x_axis + offset_ + x,    y+y_axis, int(a_[x]))   
                OLED.pixel(x_axis + offset_ + x +8, y+y_axis, int(b_[x]))   
        offset_ += 16
-
+#显示汉字
 chinese('项目网',16,4) 
 OLED.show()
+#显示英文字符串
 OLED.text('itprojects.cn',0,32)
 OLED.show()
