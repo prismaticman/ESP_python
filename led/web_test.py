@@ -31,7 +31,7 @@ def do_connect():
 
 
 # 1. 创建udp套接字
-do_connect()
+do_connect() 
 udp_socket = socket(AF_INET, SOCK_DGRAM)
 
 # 2. 准备接收方的地址
